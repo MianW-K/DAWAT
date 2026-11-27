@@ -149,13 +149,11 @@
     }
 
     #cap {
-      min-height: 3.2em;
-      margin: 6px 0 0;
-      font:
-        italic 400 1.1rem "Cormorant Garamond",
-        Georgia,
-        serif;
-      color: #d8c4cf;
+         min-height: 3.2em;
+    margin: 25px 0 0;
+    font: italic 400 1.1rem "Cormorant Garamond", Georgia, serif;
+    color: #d8c4cf;
+    font-size: 35px;
     }
     
 p.top.intro-reveal {
