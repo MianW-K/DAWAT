@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>وشاخ اور کہکشاں — منگنی کی دعوت</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=urdu-mobile-20261126">
+  <link rel="stylesheet" href="animations.css?v=urdu-mobile-20261126">
+</head>
+
+<body class="locked">
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <div id="stage" class="opening-stage">
+    <div class="intro-frame" id="intro-frame">
+      <img class="envelope-poster" src="envelope-poster.png" alt="سیاہ اور سنہری مہر والا لفافہ" aria-hidden="true">
+      <video class="envelope-film" id="intro-video" poster="envelope-poster.png" muted playsinline preload="metadata" aria-label="سنہری مہر سے کھلتا ہوا منگنی کا دعوت نامہ">
+        <source src="envelope-opening-frames.mp4" type="video/mp4">
+      </video>
+      <button class="seal-trigger" id="open-seal" type="button" aria-label="سنہری مہر دبائیں اور لفافہ کھولیں">
+        <span class="sr-only">سنہری مہر کھولیں</span>
+      </button>
+      <div class="intro-card-screen" id="intro-card-screen" aria-hidden="true">
+        <article class="intro-card">
+          <small>منگنی کی خوشی میں</small>
+          <h1>وشاخ <span>اور</span> کہکشاں</h1>
+          <div class="card-ornament" aria-hidden="true"><span>✦</span></div>
+          <p class="card-invitation-copy">ہماری خوشی کے اس خاص موقع پر آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی۔</p>
+          <p class="card-date">پیر، <bdi dir="ltr">14</bdi> دسمبر <bdi dir="ltr">2026</bdi></p>
+          <p class="card-venue">شام <bdi dir="ltr">7:00</bdi> بجے<br>لاہور کاسل بینکوئٹ ہال</p>
+          <button id="enter-invitation" type="button">دعوت نامہ دیکھیں</button>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="garland g1"></div>
+  <div class="garland g2"></div>
+  <div class="lights" id="lights"></div>
+  <main>
+    <p class="top">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْم</p>
+    <div class="names">
+      <button class="nm" data-c="حیدر اور .......... کی بیٹی">
+        وشاخ 
+      </button>
+      <span class="and">اور</span>
+      <button class="nm" data-c="عامر اور مونا کا بیٹا">کہکشاں</button>
+    </div>
+    <p id="cap" aria-live="polite">نام پر ٹیپ کریں</p>
+    <div class="stage3d">
+      <div id="r3d" role="img" aria-label="گھومتی ہوئی سہ جہتی انگوٹھی"></div>
+    </div>
+    <p class="drag">انگوٹھی گھمانے کے لیے اسے گھسیٹیں</p>
+    <div class="when">
+      <b><bdi dir="ltr">14</bdi> دسمبر <bdi dir="ltr">2026</bdi></b><span>پیر، شام <bdi dir="ltr">7:00</bdi> بجے</span>
+    </div>
+    <div id="count" aria-label="منگنی کی تقریب تک باقی وقت">
+      <div><strong>0</strong><small>دن</small></div>
+      <div><strong>0</strong><small>گھنٹے</small></div>
+      <div><strong>0</strong><small>منٹ</small></div>
+      <div><strong>0</strong><small>سیکنڈ</small></div>
+    </div>
+
+    <section>
+      <h2>شام کی تقریبات</h2>
+      <p class="sub">ہر دیا روشن کریں اور شام کی تقریبات دیکھیے۔</p>
+      <ul class="evs" id="evs">
+        <li class="ev">
+          <button class="diya" aria-pressed="false" aria-label="دیا روشن کریں: مہمانوں کی آمد">
+            <span class="flame"></span><svg width="56" height="26" viewBox="0 0 56 26">
+              <path d="M2 6Q28 40 54 6Q28 12 2 6Z" fill="#c4683a" />
+              <path d="M2 6Q28 12 54 6" stroke="#f0a15c" stroke-width="2" fill="none" />
+            </svg>
+          </button>
+          <div class="t"><b><bdi dir="ltr">7:00 PM</bdi></b>مہمانوں کی آمد</div>
+        </li>
+        <li class="ev">
+          <button class="diya" aria-pressed="false" aria-label="دیا روشن کریں: انگوٹھی کی رسم">
+            <span class="flame"></span><svg width="56" height="26" viewBox="0 0 56 26">
+              <path d="M2 6Q28 40 54 6Q28 12 2 6Z" fill="#c4683a" />
+              <path d="M2 6Q28 12 54 6" stroke="#f0a15c" stroke-width="2" fill="none" />
+            </svg>
+          </button>
+          <div class="t"><b><bdi dir="ltr">8:15 PM</bdi></b>انگوٹھی کی رسم</div>
+        </li>
+        <li class="ev">
+          <button class="diya" aria-pressed="false" aria-label="دیا روشن کریں: کیک اور تصاویر">
+            <span class="flame"></span><svg width="56" height="26" viewBox="0 0 56 26">
+              <path d="M2 6Q28 40 54 6Q28 12 2 6Z" fill="#c4683a" />
+              <path d="M2 6Q28 12 54 6" stroke="#f0a15c" stroke-width="2" fill="none" />
+            </svg>
+          </button>
+          <div class="t"><b><bdi dir="ltr">8:45 PM</bdi></b>خاندانی تصاویر</div>
+        </li>
+        <li class="ev">
+          <button class="diya" aria-pressed="false" aria-label="دیا روشن کریں: عشائیہ">
+            <span class="flame"></span><svg width="56" height="26" viewBox="0 0 56 26">
+              <path d="M2 6Q28 40 54 6Q28 12 2 6Z" fill="#c4683a" />
+              <path d="M2 6Q28 12 54 6" stroke="#f0a15c" stroke-width="2" fill="none" />
+            </svg>
+          </button>
+          <div class="t"><b><bdi dir="ltr">9:30 PM</bdi></b>ضیافت</div>
+        </li>
+      </ul>
+      <p id="dcount"><bdi dir="ltr">0 / 4</bdi> دیے روشن</p>
+    </section>
+
+    <section>
+      <h2>تقریب کی تفصیلات</h2>
+      <div class="card">
+        <div class="row">
+          <span>مقام</span><span>لاہور کاسل بینکوئٹ ہال</span>
+        </div>
+        <div class="row">
+          <span>لباس</span><span>پیسٹل یا روایتی لباس</span>
+        </div>
+        <div class="row">
+          <span>میزبان</span><span>میاں اور ...... خاندان</span>
+        </div>
+      </div>
+      <div class="btns">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Lahore+Castle+Banquet+Hall"
+          target="_blank" rel="noopener">نقشہ دیکھیں</a>
+        <a class="btn"
+          href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%DA%A9%DB%81%DA%A9%D8%B4%D8%A7%DA%BA+%D8%A7%D9%88%D8%B1+%D9%88%D8%B4%D8%A7%D8%AE+%DA%A9%DB%8C+%D9%85%D9%86%DA%AF%D9%86%DB%8C&amp;dates=20261214T140000Z/20261214T170000Z&amp;location=Lahore+Castle+Banquet+Hall"
+          target="_blank" rel="noopener">کیلنڈر میں شامل کریں</a>
+      </div>
+    </section>
+    <footer>وشاخ اور کہکشاں<small>دعاؤں میں یاد رکھیے گا</small></footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <div id="floating-petals" aria-hidden="true"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="app.js?v=urdu-mobile-20261126"></script>
+  <script src="scroll3d.js?v=urdu-mobile-20261126"></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+/* =========================================================
+   KAHKASHAN & WASHAKH — DEDICATED ANIMATION LAYER
+   Loaded after styles.css so these rules own the motion.
+   ========================================================= */
+
+/* Keep invitation content hidden until the ring-opening sequence completes. */
+html body.locked main > * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
+}
+
+/* Fade in from blur only: no vertical translation or slide movement. */
+html body.invitation-open main > *.intro-reveal {
+  opacity: 0;
+  visibility: visible !important;
+  transform: none !important;
+  filter: blur(9px);
+  animation: invitationTextBlurFade 1.05s ease-out both !important;
+  animation-delay: var(--reveal-delay, 0s) !important;
+  will-change: opacity, filter;
+}
+
+@keyframes invitationTextBlurFade {
+  0% {
+    opacity: 0;
+    filter: blur(9px);
+    transform: none;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+/* Garland and fairy lights join the reveal without shifting position. */
+html body.invitation-open .garland,
+html body.invitation-open .lights {
+  visibility: visible !important;
+  opacity: 0;
+  filter: blur(5px);
+  animation: invitationDecorFade 0.9s ease-out both !important;
+  animation-delay: 0.08s !important;
+}
+
+@keyframes invitationDecorFade {
+  from { opacity: 0; filter: blur(5px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+/* Soft gold shimmer for selected headings and ornamental borders. */
+h2,
+.top,
+.when b,
+.and,
+footer {
+  background: linear-gradient(
+    110deg,
+    #c89a45 0%,
+    #e2b45c 28%,
+    #fff0b8 46%,
+    #d5a64e 58%,
+    #f1d58c 72%,
+    #c89a45 100%
+  );
+  background-size: 240% 100%;
+  background-position: 100% 50%;
+  padding: 0 0 15px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldMetallicShimmer 8s ease-in-out infinite;
+}
+
+span.and {
+    font-size: 32px;
+    padding: 10px 10px 0 0;
+}
+
+.when {
+  animation: goldBorderGlow 7s ease-in-out infinite;
+}
+
+.card {
+  animation: goldBorderGlow 8s ease-in-out infinite;
+}
+
+section::before {
+  background:
+    linear-gradient(90deg, #9f762d, #f7df9a, #c99b45, #fff0b8, #9f762d) left center/38% 1px no-repeat,
+    linear-gradient(90deg, #9f762d, #f7df9a, #c99b45, #fff0b8, #9f762d) right center/38% 1px no-repeat;
+  background-size: 38% 1px, 38% 1px;
+  animation: goldLineShimmer 8s linear infinite;
+}
+
+@keyframes goldMetallicShimmer {
+  0%, 18% { background-position: 100% 50%; }
+  70%, 100% { background-position: 0% 50%; }
+}
+
+@keyframes goldBorderGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(226,180,92,0); }
+  50% { box-shadow: 0 0 13px rgba(226,180,92,.16), inset 0 0 8px rgba(226,180,92,.035); }
+}
+
+@keyframes goldLineShimmer {
+  0%, 100% { filter: brightness(.82); }
+  50% { filter: brightness(1.35); }
+}
+
+/* Restrained floating rose petals; decorative and non-interactive. */
+#floating-petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  contain: layout paint;
+}
+
+#floating-petals .petal {
+  position: absolute;
+  top: -12vh;
+  left: var(--left);
+  width: var(--size);
+  height: calc(var(--size) * .62);
+  border-radius: 80% 12% 80% 12%;
+  background: linear-gradient(135deg, rgba(255,190,202,.62), rgba(190,78,108,.22));
+  box-shadow: 0 0 9px rgba(232,118,140,.12);
+  opacity: 0;
+  transform: rotate(var(--rotation));
+  animation: rosePetalFloat var(--duration) linear var(--delay) infinite;
+  will-change: transform, top, opacity;
+}
+
+@keyframes rosePetalFloat {
+  0% {
+    top: -12vh;
+    opacity: 0;
+    transform: translate3d(0,0,0) rotate(var(--rotation));
+  }
+  12% { opacity: var(--opacity); }
+  50% {
+    transform: translate3d(var(--drift), 48vh, 0) rotate(calc(var(--rotation) + 190deg));
+  }
+  88% { opacity: var(--opacity); }
+  100% {
+    top: 105vh;
+    opacity: 0;
+    transform: translate3d(calc(var(--drift) * -0.55), 0, 0) rotate(calc(var(--rotation) + 360deg));
+  }
+}
+
+/* Respect the visitor's reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  html body.invitation-open main > *.intro-reveal,
+  html body.invitation-open .garland,
+  html body.invitation-open .lights {
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+  }
+  h2, .top, .when b, .and, footer, .when, .card, section::before {
+    animation: none !important;
+  }
+  #floating-petals { display: none !important; }
+}
