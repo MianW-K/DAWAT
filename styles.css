@@ -157,7 +157,10 @@
         serif;
       color: #d8c4cf;
     }
-
+    
+p.top.intro-reveal {
+    font-size: 20px;
+}
     .when {
       display: inline-grid;
       margin-top: 14px;
@@ -347,7 +350,7 @@
       border: 0;
     }
 
-    .row span:first-child {
+    .row > span:first-child {
       color: var(--muted);
     }
 
@@ -681,7 +684,7 @@
     box-shadow:0 20px 55px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.045);
   }
   .row { border-bottom-color:rgba(232,196,119,.16); }
-  .row span:first-child { color:#d5b979 !important; }
+  .row > span:first-child { color:#d5b979 !important; }
   .row span:last-child { color:#f5eadd; }
   .btn {
     color:#f5e8d6;
@@ -1079,6 +1082,25 @@ h2 {
 #count strong { line-height: 1.5; }
 #count small { line-height: 1.8; }
 
+.top { font-weight: 700 !important; }
+
+.row span.host-list {
+  display: grid;
+  flex: 0 1 68%;
+  max-width: 68%;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 14px;
+  text-align: right;
+  line-height: 1.8;
+}
+
+.host-list > span { overflow-wrap: anywhere; }
+.host-list > span:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
 .evs { text-align: right; }
 .ev { flex-direction: row; }
 .ev .t { text-align: right; }
@@ -1119,4 +1141,40 @@ body.invitation-open > .lights {
   width: auto !important;
   max-width: none !important;
   box-sizing: border-box;
+}
+
+/* Match the invitation details card to the centered reference layout. */
+.card .row {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 0 18px;
+  text-align: center;
+}
+
+.card .row > span:first-child {
+  align-self: center;
+  color: #d5b979 !important;
+  text-align: center;
+}
+
+.card .row > span:last-child {
+  max-width: 100%;
+  text-align: center;
+}
+
+.card .row > .host-list {
+  display: grid;
+  flex: none;
+  width: min(100%, 360px);
+  max-width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 18px;
+  text-align: center;
+}
+
+.card .host-list > span:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
